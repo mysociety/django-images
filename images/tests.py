@@ -101,4 +101,4 @@ class ImageTest(TestCase):
         #   pip uninstall PIL
         #   pip install pillow
 
-        im = get_thumbnail(third.image, '100x100', crop='center', quality=99)
+        get_thumbnail(third.image, '100x100', crop='center', quality=99)
