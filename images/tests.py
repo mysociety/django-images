@@ -13,7 +13,7 @@ class ImageTest(TestCase):
 
     def get_example_file_content(self, filename):
         """
-        Open the given file an dreturn it
+        Open the given file and return it
         """
         full_path = os.path.join(
             os.path.abspath( os.path.dirname(__file__) ),
