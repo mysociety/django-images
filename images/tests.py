@@ -21,8 +21,8 @@ class ImageTest(TestCase):
             filename,
         )
 
-        return File( open(full_path) )
-    
+        return File(open(full_path, 'rb'))
+
     def reload_image(self, image):
         """because there is no reload in Django models (silly really)"""
         return Image.objects.get(id=image.id)
