@@ -5,7 +5,7 @@ from django.core.files import File
 from django.contrib.sites.models import Site
 from django.contrib.contenttypes.models import ContentType
 
-from models import Image
+from .models import Image
 
 from sorl.thumbnail import get_thumbnail
 
