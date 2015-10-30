@@ -18,20 +18,20 @@ class Image(models.Model):
     # added
     source = models.CharField(max_length=400)
     # user
-    
+
     is_primary = models.BooleanField( default=False )
-    
+
     def save(self, *args, **kwargs):
         """
         Only one image should be marked as is_primary for an object.
         """
-        
+
         # other images for this object
         siblings = Image.objects.filter(
             content_type = self.content_type,
             object_id    = self.object_id,
         )
-        
+
         # check that we are not first entry for content_object
         if not siblings.count():
             self.is_primary = True

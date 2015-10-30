@@ -5,9 +5,9 @@ from south.v2 import SchemaMigration
 from django.db import models
 
 class Migration(SchemaMigration):
-    
+
     def forwards(self, orm):
-        
+
         # Adding model 'Image'
         db.create_table('images_image', (
             ('is_primary', self.gf('django.db.models.fields.BooleanField')(default=False, blank=True)),
@@ -18,14 +18,14 @@ class Migration(SchemaMigration):
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
         ))
         db.send_create_signal('images', ['Image'])
-    
-    
+
+
     def backwards(self, orm):
-        
+
         # Deleting model 'Image'
         db.delete_table('images_image')
-    
-    
+
+
     models = {
         'contenttypes.contenttype': {
             'Meta': {'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
@@ -44,5 +44,5 @@ class Migration(SchemaMigration):
             'source': ('django.db.models.fields.CharField', [], {'max_length': '400'})
         }
     }
-    
+
     complete_apps = ['images']
