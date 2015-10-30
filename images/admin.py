@@ -4,11 +4,7 @@ from django.contrib.contenttypes.generic import GenericTabularInline
 from sorl.thumbnail import get_thumbnail
 from sorl.thumbnail.admin import AdminImageMixin
 
-from pombola.images import models
-
-
-
-
+from images import models
 
 
 class ImageAdmin(AdminImageMixin, admin.ModelAdmin):
