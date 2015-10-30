@@ -7,14 +7,11 @@ from django.contrib.contenttypes.models import ContentType
 
 from models import Image
 
-from nose.tools import nottest
-
 from sorl.thumbnail import get_thumbnail
 
 class ImageTest(TestCase):
 
-    @nottest
-    def get_test_file_content(self, filename):
+    def get_example_file_content(self, filename):
         """
         Open the given file an dreturn it
         """
@@ -50,7 +47,7 @@ class ImageTest(TestCase):
         )
         first.image.save(
             name    = 'foo.png',
-            content = self.get_test_file_content('foo.png'),
+            content = self.get_example_file_content('foo.png'),
         )
         
         # check that the is_primary is true
@@ -64,7 +61,7 @@ class ImageTest(TestCase):
         )
         second.image.save(
             name    = 'bar.png',
-            content = self.get_test_file_content('bar.png'),
+            content = self.get_example_file_content('bar.png'),
         )
         
         # check that is_primary is false
@@ -88,7 +85,7 @@ class ImageTest(TestCase):
         )
         third.image.save(
             name    = 'baz.png',
-            content = self.get_test_file_content('baz.png'),
+            content = self.get_example_file_content('baz.png'),
         )
         
         # check that is_primary is updated for all
