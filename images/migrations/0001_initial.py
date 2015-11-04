@@ -1,48 +1,26 @@
-# encoding: utf-8
-import datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
-class Migration(SchemaMigration):
-
-    def forwards(self, orm):
-
-        # Adding model 'Image'
-        db.create_table('images_image', (
-            ('is_primary', self.gf('django.db.models.fields.BooleanField')(default=False, blank=True)),
-            ('image', self.gf('sorl.thumbnail.fields.ImageField')(max_length=100)),
-            ('object_id', self.gf('django.db.models.fields.PositiveIntegerField')()),
-            ('source', self.gf('django.db.models.fields.CharField')(max_length=400)),
-            ('content_type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['contenttypes.ContentType'])),
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-        ))
-        db.send_create_signal('images', ['Image'])
+from django.db import models, migrations
+import sorl.thumbnail.fields
 
 
-    def backwards(self, orm):
+class Migration(migrations.Migration):
 
-        # Deleting model 'Image'
-        db.delete_table('images_image')
+    dependencies = [
+        ('contenttypes', '0002_remove_content_type_name'),
+    ]
 
-
-    models = {
-        'contenttypes.contenttype': {
-            'Meta': {'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
-            'app_label': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
-        },
-        'images.image': {
-            'Meta': {'object_name': 'Image'},
-            'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['contenttypes.ContentType']"}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'image': ('sorl.thumbnail.fields.ImageField', [], {'max_length': '100'}),
-            'is_primary': ('django.db.models.fields.BooleanField', [], {'default': 'False', 'blank': 'True'}),
-            'object_id': ('django.db.models.fields.PositiveIntegerField', [], {}),
-            'source': ('django.db.models.fields.CharField', [], {'max_length': '400'})
-        }
-    }
-
-    complete_apps = ['images']
+    operations = [
+        migrations.CreateModel(
+            name='Image',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('object_id', models.PositiveIntegerField()),
+                ('image', sorl.thumbnail.fields.ImageField(upload_to=b'images')),
+                ('source', models.CharField(max_length=400)),
+                ('is_primary', models.BooleanField(default=False)),
+                ('content_type', models.ForeignKey(to='contenttypes.ContentType')),
+            ],
+        ),
+    ]
