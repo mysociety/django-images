@@ -1,0 +1,4 @@
+0.0.2
+    * Add Django >= 1.7 migrations with South fallback
+0.0.1
+    * Initial release from Edmund von der Burg's work
