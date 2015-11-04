@@ -1,5 +1,11 @@
 from django.contrib import admin
-from django.contrib.contenttypes.generic import GenericTabularInline
+try:
+    from django.contrib.contenttypes.admin import GenericTabularInline
+except ImportError:
+    # This fallback import is the version that was deprecated in
+    # Django 1.7 and is removed in 1.9:
+    from django.contrib.contenttypes.generic import GenericTabularInline
+
 
 from sorl.thumbnail import get_thumbnail
 from sorl.thumbnail.admin import AdminImageMixin
