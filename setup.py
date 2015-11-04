@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 setup(
     name = "mysociety-django-images",
-    version = "0.0.2",
+    version = "0.0.3",
     packages = find_packages(),
     author = "Edmund von der Burg",
     author_email = "evdb@ecclestoad.co.uk",
