@@ -56,7 +56,13 @@ class Image(models.Model):
 class HasImageMixin():
 
     def primary_image(self):
-        primary = [i for i in self.images.all() if i.is_primary]
-        if primary:
-            return primary[0].image
+        primary_image_model = self.primary_image_model()
+        if primary_image_model:
+            return primary_image_model.image
+        return None
+
+    def primary_image_model(self):
+        primary_images = [i for i in self.images.all() if i.is_primary]
+        if primary_images:
+            return primary_images[0]
         return None
