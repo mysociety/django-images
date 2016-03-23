@@ -53,7 +53,7 @@ class Image(models.Model):
                 sibling.save()
 
 
-class HasImageMixin():
+class HasImageMixin(object):
 
     def primary_image(self):
         primary_image_model = self.primary_image_model()
