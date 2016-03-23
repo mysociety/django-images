@@ -9,7 +9,7 @@ setup(
     license = "AGPL",
     keywords = "django images",
     install_requires = [
-        'Django',
+        'Django>=1.8',
         'sorl-thumbnail',
         'Pillow',
     ]
