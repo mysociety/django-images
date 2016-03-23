@@ -18,7 +18,7 @@ class Image(models.Model):
     content_object = GenericForeignKey('content_type', 'object_id')
 
     # store the actual image
-    image = ImageField( upload_to="images" )
+    image = ImageField(upload_to="images", max_length=512)
 
     # added
     source = models.CharField(max_length=400)
